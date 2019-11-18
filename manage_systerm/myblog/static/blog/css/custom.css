@@ -240,9 +240,6 @@ img {
     color: #000;
 }
 
-.article-category::after,
-.article-date::after,
-.article-author::after,
 .comments-link::after {
     content: ' ·';
     color: #000;
