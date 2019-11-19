@@ -1,3 +1,4 @@
+import markdown
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -5,6 +6,7 @@ from django.db import models
 from django.db.models import CharField, TextField
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.html import strip_tags
 
 
 class Category(models.Model):
@@ -57,3 +59,12 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('myblog:detail', kwargs={'pk': self.pk})
+
+    def save(self,*args, **kwargs):
+        md = markdown.Markdown(extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+        ])
+
+        self.excerpt = strip_tags(md.convert(self.content))[:50]
+        super().save(*args, **kwargs)

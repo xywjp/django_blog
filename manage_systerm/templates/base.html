@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 {% load static %}
+{% load blog_extra %}
 <head>
     <title>Black &amp; White</title>
 
@@ -107,6 +108,15 @@
             <aside class="col-md-4">
                 {% block toc %}
                 {% endblock toc %}
+
+                {% show_recent_articles %}
+                {% show_archives %}
+                {% show_categories %}
+                {% show_tags %}
+
+                <div class="rss">
+                    <a href=""><span class="ion-social-rss-outline"></span> RSS 订阅</a>
+                </div>
             </aside>
         </div>
     </div>
