@@ -1,6 +1,6 @@
 
 {% extends 'base.html' %}
-
+{% load comments_extras %}
 {% block main %}
     <article class="article article-{{ article.pk }}">
         <header class="entry-header">
@@ -16,7 +16,13 @@
         </header>
         <div class="entry-content clearfix">
             {{ article.content | safe }}
-         </div>
+        </div>
+
+        <h3>发表评论</h3>
+        {% show_comment_form  article %}
+        <div class="comment-list-panel">
+            {% show_comments article %}
+        </div>
     </article>
     <section class="comment-area">
       ...
@@ -35,3 +41,4 @@
     </div>
     {% endif %}
 {% endblock toc %}
+
