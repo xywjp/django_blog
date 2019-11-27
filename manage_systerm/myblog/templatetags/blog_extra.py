@@ -18,8 +18,10 @@ def show_archives(context):
 
 @register.inclusion_tag('myblog/inclusions/_categories.html', takes_context=True)
 def show_categories(context):
+    category_list = Category.objects.all()
     return {
-        'category_list': Category.objects.all(),
+        'category_list': category_list,
+        'length': len(category_list)
     }
 
 

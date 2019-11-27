@@ -15,7 +15,7 @@ def index(request):
     首页访问
     :return:
     """
-    article_list = Article.objects.all().order_by('-created_time')
+    article_list = Article.objects.all()
     return render(request, 'myblog/index.html', context={
        'article_list': article_list
     })
